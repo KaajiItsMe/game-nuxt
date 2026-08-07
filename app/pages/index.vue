@@ -1,8 +1,9 @@
 <template>
   <div class="pb-5">
     <!-- Hero Slider (Featured Game) -->
-    <div v-if="featuredGame" class="hero-slider-container mb-5">
-      <div class="hero-slider-bg">
+    <div class="container mt-4">
+      <div v-if="featuredGame" class="hero-slider-container mb-5">
+        <div class="hero-slider-bg">
         <img :src="`/${featuredGame.image}`" :alt="featuredGame.title">
       </div>
       <div class="hero-slider-content container py-5">
@@ -27,6 +28,7 @@
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
     
