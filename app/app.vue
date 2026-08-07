@@ -18,7 +18,7 @@
               <NuxtLink class="nav-link font-weight-bold" to="/tentang" active-class="text-white">Tentang</NuxtLink>
             </li>
             <li class="nav-item position-relative" @mouseenter="showGenre = true" @mouseleave="showGenre = false">
-              <a class="nav-link font-weight-bold" href="#" style="cursor: pointer;">Genre ▼</a>
+              <NuxtLink class="nav-link font-weight-bold" to="/genres" style="cursor: pointer;">Genre ▼</NuxtLink>
               <transition name="fade">
                 <div v-show="showGenre" class="dropdown-menu show" style="position: absolute; top: 100%; left: 0; background: rgba(15,23,42,0.95); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; margin-top: 0; padding: 8px 0; min-width: 150px; z-index: 1000;">
                   <NuxtLink v-for="g in ['Action', 'Adventure', 'RPG', 'Racing', 'Sports', 'Horror', 'Simulation']" :key="g" class="dropdown-item text-white" :to="`/?genre=${g}`" @click="showGenre = false" style="transition: background 0.2s;">
