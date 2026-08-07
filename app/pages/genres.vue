@@ -7,11 +7,18 @@
         <p style="color: #94a3b8; font-size: 1.1rem; max-width: 600px; margin: 0 auto;">Temukan game favoritmu dari puluhan genre yang tersedia. Dari aksi tembak-tembakan seru hingga teka-teki santai, semuanya ada di sini.</p>
       </div>
 
-      <div class="row">
+      <div class="row" v-if="pending">
+        <div class="col-12 text-center py-5">
+          <div class="spinner-border text-info" role="status"></div>
+          <p class="text-white mt-3">Memuat genre...</p>
+        </div>
+      </div>
+      <div class="row" v-else>
         <div v-for="(genre, idx) in allGenres" :key="idx" class="col-lg-3 col-md-4 col-6 mb-4">
           <NuxtLink :to="`/?genre=${encodeURIComponent(genre.name)}`" class="genre-card">
             <div class="genre-icon">{{ genre.emoji }}</div>
             <h5 class="genre-name">{{ genre.name }}</h5>
+            <small class="text-muted mt-2">{{ genre.count }} Game</small>
           </NuxtLink>
         </div>
       </div>
@@ -27,29 +34,54 @@ useHead({
   title: 'Kategori Genre - Agame25'
 })
 
-// Daftar lengkap genre beserta emoji yang relevan
-const allGenres = ref([
-  { name: 'Action', emoji: '⚔️' },
-  { name: 'Adventure', emoji: '🗺️' },
-  { name: 'RPG', emoji: '🧙‍♂️' },
-  { name: 'Shooter', emoji: '🔫' },
-  { name: 'Racing', emoji: '🏎️' },
-  { name: 'Sports', emoji: '⚽' },
-  { name: 'Horror', emoji: '🧟' },
-  { name: 'Simulation', emoji: '🚜' },
-  { name: 'Strategy', emoji: '♟️' },
-  { name: 'Puzzle', emoji: '🧩' },
-  { name: 'Fighting', emoji: '🥊' },
-  { name: 'Platformer', emoji: '🦘' },
-  { name: 'Survival', emoji: '🏕️' },
-  { name: 'Stealth', emoji: '🥷' },
-  { name: 'Casual', emoji: '🎮' },
-  { name: 'Open World', emoji: '🌍' },
-  { name: 'Story Rich', emoji: '📖' },
-  { name: 'Co-op', emoji: '🤝' },
-  { name: 'Multiplayer', emoji: '🌐' },
-  { name: 'Indie', emoji: '💎' }
-])
+const supabase = useSupabaseClient()
+
+// Kamus emoji untuk mencocokkan nama genre secara otomatis
+const getEmoji = (genreName) => {
+  const map = {
+    'action': '⚔️', 'adventure': '🗺️', 'rpg': '🧙‍♂️', 'shooter': '🔫',
+    'racing': '🏎️', 'sports': '⚽', 'horror': '🧟', 'simulation': '🚜',
+    'strategy': '♟️', 'puzzle': '🧩', 'fighting': '🥊', 'platformer': '🦘',
+    'survival': '🏕️', 'stealth': '🥷', 'casual': '🎮', 'open world': '🌍',
+    'story rich': '📖', 'co-op': '🤝', 'multiplayer': '🌐', 'indie': '💎',
+    'action rpg': '🔥', 'soulslike': '💀', 'dark fantasy': '🦇',
+    'choices matter': '⚖️', 'female protagonist': '👧', 'episodic adventure': '📺'
+  }
+  return map[genreName.toLowerCase()] || '🎮'
+}
+
+// Ambil semua game dan ekstrak genre-nya secara dinamis
+const { data: allGenres, pending } = await useAsyncData('dynamic-genres', async () => {
+  const { data } = await supabase.from('games').select('genres')
+  if (!data) return []
+  
+  const genreCount = {}
+  
+  data.forEach(game => {
+    let genresArray = []
+    if (Array.isArray(game.genres)) {
+      genresArray = game.genres
+    } else if (typeof game.genres === 'string') {
+      try { genresArray = JSON.parse(game.genres) } catch(e) {}
+    }
+    
+    if (Array.isArray(genresArray)) {
+      genresArray.forEach(g => {
+        const cleanGenre = g.trim()
+        if (cleanGenre) {
+          genreCount[cleanGenre] = (genreCount[cleanGenre] || 0) + 1
+        }
+      })
+    }
+  })
+  
+  // Ubah ke format array dan urutkan berdasarkan abjad
+  return Object.keys(genreCount).map(name => ({
+    name,
+    count: genreCount[name],
+    emoji: getEmoji(name)
+  })).sort((a, b) => a.name.localeCompare(b.name))
+})
 </script>
 
 <style scoped>
