@@ -85,7 +85,10 @@
               <div class="card-body d-flex flex-column justify-content-between pb-3">
                 <h5 class="card-title text-white font-weight-bold mb-2" style="font-size: 1rem; line-height: 1.4;">{{ game.title }}</h5>
                 <div>
-                  <small class="text-muted d-block mb-2">{{ game.year }}</small>
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <small class="text-muted d-block">{{ game.year }}</small>
+                    <span v-if="game.avgRating > 0" style="font-size: 0.8rem; color: #fbbf24;">⭐ {{ game.avgRating.toFixed(1) }}</span>
+                  </div>
                   <div class="genres">
                     <span
                       v-for="genre in (game.genres || []).slice(0, 2)"
@@ -125,8 +128,20 @@ const genreFilter = ref(route.query.genre || '')
 const platforms = ['Semua', 'PC', 'PS2', 'PS3']
 
 const { data: games, pending } = await useAsyncData('games', async () => {
-  const { data } = await supabase.from('games').select('*')
-  return data
+  const { data: allGames } = await supabase.from('games').select('*')
+  
+  if (allGames && allGames.length > 0) {
+    const { data: comments } = await supabase.from('comments').select('game_id, rating')
+    
+    return allGames.map(game => {
+      const gameComments = comments?.filter(c => c.game_id === game.id) || []
+      const avgRating = gameComments.length > 0 
+        ? gameComments.reduce((sum, c) => sum + c.rating, 0) / gameComments.length 
+        : 0
+      return { ...game, avgRating }
+    })
+  }
+  return []
 })
 
 const filteredGames = computed(() => {

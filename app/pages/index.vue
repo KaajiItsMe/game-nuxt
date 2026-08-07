@@ -82,7 +82,10 @@
               <img :src="`/${game.image}`" :alt="game.title">
               <div class="similar-card-body">
                 <p class="similar-card-title">{{ game.title }}</p>
-                <span class="similar-card-platform">{{ game.platform }}</span>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="similar-card-platform">{{ game.platform }}</span>
+                  <span v-if="game.avgRating > 0" style="font-size: 0.8rem; color: #fbbf24;">⭐ {{ game.avgRating.toFixed(1) }}</span>
+                </div>
               </div>
             </NuxtLink>
           </div>
@@ -156,8 +159,21 @@ const loading = ref(true)
 const featuredGames = ref([])
 
 const { data } = await useAsyncData('featured-games', async () => {
-  const { data } = await supabase.from('games').select('id, title, image, platform, created_at').limit(6)
-  return data
+  const { data: games } = await supabase.from('games').select('id, title, image, platform, created_at').limit(6)
+  
+  if (games && games.length > 0) {
+    const gameIds = games.map(g => g.id)
+    const { data: comments } = await supabase.from('comments').select('game_id, rating').in('game_id', gameIds)
+    
+    return games.map(game => {
+      const gameComments = comments?.filter(c => c.game_id === game.id) || []
+      const avgRating = gameComments.length > 0 
+        ? gameComments.reduce((sum, c) => sum + c.rating, 0) / gameComments.length 
+        : 0
+      return { ...game, avgRating }
+    })
+  }
+  return []
 })
 
 const isNew = (dateStr) => {
