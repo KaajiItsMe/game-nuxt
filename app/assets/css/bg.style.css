@@ -1,0 +1,197 @@
+.bg-wallpaper {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    background-size: cover;
+    color: #e2e8f0;
+    z-index: 0;
+    position: relative;
+    background-attachment: fixed;
+}
+
+.bg-wallpaper:before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.bg-wallpaper2 {
+    min-height: 100vh;
+    background-image: url("../wallapaper/10.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    z-index: 0;
+    position: relative;
+    background-attachment: fixed;
+}
+
+.bg-wallpaper2:before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.637);
+    z-index: -1;
+}
+
+.bg-wallpaper3 {
+    min-height: 100vh;
+    background-image: url("../wallapaper/3.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    z-index: 0;
+    position: relative;
+    background-attachment: fixed;
+}
+
+.bg-wallpaper3:before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.637);
+    z-index: -1;
+}
+
+.bg-wallpaper4 {
+    min-height: 100vh;
+    background-image: url("../wallapaper/4.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    z-index: 0;
+    position: relative;
+    background-attachment: fixed;
+}
+
+.bg-wallpaper4:before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.637);
+    z-index: -1;
+}
+
+.bg-wallpaper5 {
+    min-height: 100vh;
+    background-image: url("../wallapaper/5.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    z-index: 0;
+    position: relative;
+    background-attachment: fixed;
+}
+
+.bg-wallpaper5:before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.637);
+    z-index: -1;
+}
+
+.bg-wallpaper6 {
+    min-height: 100vh;
+    background-image: url("../wallapaper/6.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    z-index: 0;
+    position: relative;
+    background-attachment: fixed;
+}
+
+.bg-wallpaper6:before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.637);
+    z-index: -1;
+}
+
+.bg-wallpaper7 {
+    min-height: 100vh;
+    background-image: url("../wallapaper/7.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    z-index: 0;
+    position: relative;
+    background-attachment: fixed;
+}
+
+.bg-wallpaper7:before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.637);
+    z-index: -1;
+}
+
+.bg-wallpaper8 {
+    min-height: 100vh;
+    background-image: url("../wallapaper/8.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    z-index: 0;
+    position: relative;
+    background-attachment: fixed;
+}
+
+.bg-wallpaper8:before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.637);
+    z-index: -1;
+}
+
+.bg-wallpaper9 {
+    min-height: 100vh;
+    background-image: url("../wallapaper/9.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    z-index: 0;
+    position: relative;
+    background-attachment: fixed;
+}
+
+.bg-wallpaper9:before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.637);
+    z-index: -1;
+}
+
+.bg-wallpaper10 {
+    min-height: 100vh;
+    background-image: url("../wallapaper/11.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    z-index: 0;
+    position: relative;
+    background-attachment: fixed;
+}
+
+.bg-wallpaper10:before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.637);
+    z-index: -1;
+}

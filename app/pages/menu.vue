@@ -1,0 +1,181 @@
+<template>
+  <div class="pb-5">
+    <!-- Hero Header -->
+    <div class="text-center py-5 px-3" style="padding-top: 60px !important;">
+      <p class="section-label">🎮 SEMUA GAME</p>
+      <h1 class="section-title" style="font-family: 'BigSpace'; letter-spacing: 3px; font-size: clamp(2.5rem, 6vw, 4.5rem);">
+        Jelajahi <span class="text-gradient">Katalog</span>
+      </h1>
+      <p class="section-subtitle mb-5">Temukan ratusan game premium siap diunduh untuk PC &amp; Konsol</p>
+
+      <!-- Search Bar -->
+      <div class="container">
+        <div class="col-md-7 mx-auto">
+          <input
+            type="text"
+            v-model="searchQuery"
+            class="search-modern"
+            placeholder="🔍  Cari game favoritmu (cth: Resident Evil, Racing...)"
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter & Sort Bar -->
+    <div class="container mb-4">
+      <div class="d-flex flex-wrap align-items-center justify-content-between">
+        <!-- Platform Filter -->
+        <div class="mb-2">
+          <button
+            v-for="p in platforms"
+            :key="p"
+            class="filter-btn"
+            :class="{ active: activePlatform === p }"
+            @click="activePlatform = p"
+          >{{ p }}</button>
+        </div>
+        <!-- Sort -->
+        <div class="mb-2">
+          <select v-model="sortBy" class="input-modern" style="border-radius: 50px !important; padding: 8px 20px !important; font-size: 0.875rem !important; cursor: pointer;">
+            <option value="default">Urutan Default</option>
+            <option value="az">A → Z</option>
+            <option value="za">Z → A</option>
+            <option value="year_desc">Tahun Terbaru</option>
+            <option value="year_asc">Tahun Terlama</option>
+          </select>
+        </div>
+      </div>
+      <!-- Result Count -->
+      <div class="d-flex align-items-center flex-wrap" style="gap: 8px;">
+        <p class="mt-2 mb-0" style="color: #475569; font-size: 0.875rem;">
+          Menampilkan <strong class="text-white">{{ filteredGames.length }}</strong> dari <strong class="text-white">{{ games?.length || 0 }}</strong> game
+        </p>
+        <span v-if="genreFilter" class="filter-btn active ml-2" style="padding: 4px 14px; font-size: 0.8rem; cursor:pointer;" @click="genreFilter = ''">
+          🏷 {{ genreFilter }} &times;
+        </span>
+      </div>
+    </div>
+
+    <!-- Games Grid -->
+    <div class="container">
+      <!-- Skeleton Loader -->
+      <div v-if="pending" class="row">
+        <div v-for="n in 12" :key="n" class="col-lg-3 col-md-4 col-6 mb-5">
+          <div class="skeleton-card">
+            <div class="skeleton skeleton-img"></div>
+            <div class="p-3">
+              <div class="skeleton skeleton-line w-full"></div>
+              <div class="skeleton skeleton-line w-3/4"></div>
+              <div class="skeleton skeleton-line w-1/2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Games -->
+      <div v-else class="row" id="game-list">
+        <div v-for="game in filteredGames" :key="game.id" class="col-lg-3 col-md-4 col-6 mb-5">
+          <NuxtLink :to="`/game/${game.id}`" class="text-decoration-none">
+            <div class="card h-100 game-card glass-card border-0">
+              <span class="badge-platform">{{ game.platform }}</span>
+              <div class="img-container">
+                <img :src="`/${game.image}`" class="card-img-top w-100" :alt="game.title" style="aspect-ratio: 16/9; object-fit: cover;">
+              </div>
+              <div class="card-body d-flex flex-column justify-content-between pb-3">
+                <h5 class="card-title text-white font-weight-bold mb-2" style="font-size: 1rem; line-height: 1.4;">{{ game.title }}</h5>
+                <div>
+                  <small class="text-muted d-block mb-2">{{ game.year }}</small>
+                  <div class="genres">
+                    <span
+                      v-for="genre in (game.genres || []).slice(0, 2)"
+                      :key="genre"
+                      class="badge-genre"
+                      @click.prevent="setGenreFilter(genre.trim())"
+                    >{{ genre.trim() }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </NuxtLink>
+        </div>
+
+        <div v-if="filteredGames.length === 0 && !pending" class="col-12 text-center py-5">
+          <div style="font-size: 4rem; margin-bottom: 16px;">🔍</div>
+          <h3 class="text-white">Game tidak ditemukan.</h3>
+          <p style="color: #475569;">Coba kata kunci atau filter yang berbeda.</p>
+          <button class="btn btn-outline-light rounded-pill px-4 mt-2" @click="resetFilter">Reset Filter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, computed } from 'vue'
+
+const supabase = useSupabaseClient()
+const route = useRoute()
+
+const searchQuery = ref('')
+const activePlatform = ref('Semua')
+const sortBy = ref('default')
+const genreFilter = ref(route.query.genre || '')
+
+const platforms = ['Semua', 'PC', 'PS2', 'PS3']
+
+const { data: games, pending } = await useAsyncData('games', async () => {
+  const { data } = await supabase.from('games').select('*')
+  return data
+})
+
+const filteredGames = computed(() => {
+  if (!games.value) return []
+  let list = [...games.value]
+
+  // Platform filter
+  if (activePlatform.value !== 'Semua') {
+    list = list.filter(g => g.platform?.toUpperCase() === activePlatform.value.toUpperCase())
+  }
+
+  // Genre filter (from clicking badge)
+  if (genreFilter.value) {
+    list = list.filter(g => g.genres && g.genres.some(genre => genre.toLowerCase() === genreFilter.value.toLowerCase()))
+  }
+
+  // Search filter
+  if (searchQuery.value) {
+    const q = searchQuery.value.toLowerCase()
+    list = list.filter(g =>
+      g.title?.toLowerCase().includes(q) ||
+      (g.genres && g.genres.some(genre => genre.toLowerCase().includes(q)))
+    )
+  }
+
+  // Sort
+  if (sortBy.value === 'az') list.sort((a, b) => a.title.localeCompare(b.title))
+  else if (sortBy.value === 'za') list.sort((a, b) => b.title.localeCompare(a.title))
+  else if (sortBy.value === 'year_desc') list.sort((a, b) => (b.year || 0) - (a.year || 0))
+  else if (sortBy.value === 'year_asc') list.sort((a, b) => (a.year || 0) - (b.year || 0))
+
+  return list
+})
+
+const resetFilter = () => {
+  searchQuery.value = ''
+  activePlatform.value = 'Semua'
+  sortBy.value = 'default'
+  genreFilter.value = ''
+}
+
+const setGenreFilter = (genre) => {
+  genreFilter.value = genreFilter.value === genre ? '' : genre
+  searchQuery.value = ''
+}
+</script>
+
+<style scoped>
+.card-hover-effect {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+</style>
+

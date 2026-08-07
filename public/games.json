@@ -1,0 +1,336 @@
+[
+  {
+    "id": 1,
+    "title": "Red Dead Redemption 2",
+    "platform": "pc",
+    "image": "source/game1.jpg",
+    "genres": [
+      "Action",
+      "      Adventure"
+    ],
+    "description": "Petualangan epik dari Rockstar Games yang membawa pemain ke Amerika pada akhir abad ke-19. Kamu berperan sebagai Arthur Morgan, seorang anggota geng Van der Linde, yang hidup dalam dunia penuh kekerasan, moral abu-abu, dan pilihan sulit. Game ini menghadirkan dunia terbuka terbesar dan paling detail yang pernah dibuat Rockstar, dengan hutan, kota, pegunungan, hingga rawa yang bisa dijelajahi bebas. Cerita berfokus pada loyalitas, kehormatan, dan pengkhianatan di tengah keruntuhan era koboi. Selain misi utama, pemain bisa berburu, memancing, berdagang, dan berinteraksi dengan ratusan karakter unik.rnrnOriginal From: https://www.ovagames.com/964963-red-dead-redemption-2-multi13-elamigos.html (ovagames.com)rnrnPassword: www.ovagames.com",
+    "price": "Rp 499.000 (Free Download Available)",
+    "year": 2018,
+    "developer": "Rockstar Games",
+    "publisher": "Rockstar Games",
+    "req_min": {
+      "os": "Windows 10 (64-bit)",
+      "processor": "ntel Core i5-2500K / AMD FX-6300",
+      "memory": "8 GB RAM",
+      "graphics": "Nvidia GTX 770 2GB / AMD R9 280 3GB",
+      "storage": "150 GB available space"
+    },
+    "req_rec": {
+      "os": "Windows 10 (64-bit)",
+      "processor": "Intel Core i7-4770K / AMD Ryzen 5 1500X",
+      "memory": "12 GB RAM",
+      "graphics": "Nvidia GTX 1060 6GB / AMD RX 480 4GB",
+      "storage": "150 GB available space"
+    },
+    "trailer": "https://www.youtube.com/embed/eaW0tYpxyp0",
+    "link": "https://www.filecrypt.cc/Container/8711E7056F.html",
+    "is_parted": 0
+  },
+  {
+    "id": 2,
+    "title": "Hollow Knight: Silksong",
+    "platform": "pc",
+    "image": "source/game2.jpg",
+    "genres": [
+      "Action",
+      "  Platformer"
+    ],
+    "description": "Sekuel dari Hollow Knight yang sangat dinanti. Kali ini kamu mengendalikan Hornet, putri penjaga kerajaan Hallownest. Tertangkap dan dibawa ke sebuah kerajaan asing yang misterius, Hornet harus melawan musuh-musuh mematikan sambil mengungkap rahasia dunia baru ini. Gameplay berupa platformer metroidvania dengan ratusan area baru, musuh beragam, bos epik, dan sistem pertarungan cepat berbasis jarum khas Hornet. Selain eksplorasi bawah tanah, pemain akan menemukan kota baru, karakter NPC dengan cerita unik, serta tantangan sampingan.rnrnOriginal From: https://steamrip.com/hollow-knight-silksong-free-download/ (SteamRIP)",
+    "price": "Rp 299.000 (Free Download Available)",
+    "year": 2025,
+    "developer": "Team Cherry",
+    "publisher": "Team Cherry",
+    "req_min": {
+      "os": "Windows 10",
+      "processor": "Intel Core i3",
+      "memory": "4 GB RAM",
+      "graphics": "GeForce GTX 650",
+      "storage": "20 GB available space"
+    },
+    "req_rec": {
+      "os": "Windows 10",
+      "processor": "Intel Core i5",
+      "memory": "8 GB RAM",
+      "graphics": "GeForce GTX 960",
+      "storage": "20 GB available space"
+    },
+    "trailer": "https://www.youtube.com/embed/6XGeJwsUP9c",
+    "link": "https://gofile.io/d/vu9S1a",
+    "is_parted": 0
+  },
+  {
+    "id": 3,
+    "title": "Need For Speed Heat",
+    "platform": "pc",
+    "image": "source/game3.png",
+    "genres": [
+      "Racing",
+      "    Action"
+    ],
+    "description": "Game balap dunia terbuka dari EA yang membawa pemain ke Palm City, kota fiksi terinspirasi Miami. Siang hari, kamu bisa ikut balapan resmi untuk mendapatkan uang. Malam hari, semuanya berubah menjadi balapan liar penuh risiko di jalanan kota. Polisi menjadi ancaman besar pada malam hari, mengejar tanpa henti. Sistem â€œRisk vs Rewardâ€ membuat pemain harus memilih apakah akan pulang untuk menyimpan reputasi atau terus balapan dengan resiko tertangkap. Game ini menggabungkan kustomisasi mobil mendalam, musik energik, dan atmosfer jalanan yang intens.rnrnOriginal From: https://www.yasir252.com/game/download-need-for-speed-heat-full-version-pc-gratis/ (yasir252.com)rnrnPassword: www.yasir252.com",
+    "price": "Rp 399.000 (Free Download Available)",
+    "year": 2019,
+    "developer": "Ghost Games",
+    "publisher": "Electronic Arts",
+    "req_min": {
+      "os": "Windows 10 (64-bit)",
+      "processor": "Intel Core i5-3570 / AMD FX-6350",
+      "memory": "8 GB RAM",
+      "graphics": "NVIDIA GeForce GTX 760 / AMD Radeon 7970",
+      "storage": "50 GB available space"
+    },
+    "req_rec": {
+      "os": "Windows 10 (64-bit)",
+      "processor": "Intel Core i7-4790 / AMD Ryzen 3 1300X",
+      "memory": "16 GB RAM",
+      "graphics": "NVIDIA GeForce GTX 1060 / AMD Radeon RX 480",
+      "storage": "50 GB available space"
+    },
+    "trailer": "https://www.youtube.com/embed/n1xdf-YM5k0",
+    "link": "https://www.mediafire.com/folder/6geijukbyyabk/NFSH",
+    "is_parted": 0
+  },
+  {
+    "id": 4,
+    "title": "Resident Evil 4 (USA)",
+    "platform": "ps2",
+    "image": "source/ResidentEvil4.jpg",
+    "genres": [
+      "Survival Horror",
+      "   Action",
+      "   Third-Person Shooter",
+      "   Adventure"
+    ],
+    "description": "*Resident Evil 4 (2005)* adalah game survival horror ikonik dari Capcom yang mengikuti perjalanan Leon S. Kennedy dalam menyelamatkan putri Presiden dari kultus misterius di pedesaan Spanyol. Menghadirkan perpaduan aksi intens dan horor menegangkan, game ini memperkenalkan sistem kamera *over-the-shoulder* yang revolusioner, musuh Ganado yang agresif, serta berbagai lokasi mencekam mulai dari desa terpencil hingga kastil berbahaya. Dengan gameplay cepat, senjata yang dapat ditingkatkan, dan karakter-karakter memorable seperti Ada Wong, game ini diakui sebagai salah satu judul terbaik sepanjang masa dalam genre aksi-horor.rnrnOriginal From: https://cdromance.org/ps2-iso/resident-evil-4-usa-2/",
+    "price": "Free Download Available",
+    "year": 2005,
+    "developer": "Capcom Production Studio 4",
+    "publisher": "Capcom",
+    "req_min": {
+      "os": "Windows XP / Windows Vista",
+      "processor": "Intel Pentium 4 1.4 GHz",
+      "memory": "256 MB RAM",
+      "graphics": "DirectX 9.0c compatible, 128 MB VRAM (GeForce 6600 / ATI Radeon 9000 series)",
+      "storage": "7 GB space tersedia"
+    },
+    "req_rec": {
+      "os": "Windows XP / Vista / Windows 7",
+      "processor": "Intel Pentium 4 2.4 GHz atau setara",
+      "memory": "1 GB RAM",
+      "graphics": "DirectX 9.0c compatible, 256 MB VRAM (GeForce 8000 series / Radeon X series)",
+      "storage": "7 GB space tersedia"
+    },
+    "trailer": "https://www.youtube.com/embed/1KTghW30ZuY?si=-FPPbh0DrAZ2K5P_",
+    "link": "https://dl9.cdromance.org/download.php?file=Resident%20Evil%204%20%28USA%29.7z&id=81103&platform=ps2-iso&key=9163263556",
+    "is_parted": 0
+  },
+  {
+    "id": 5,
+    "title": "It Takes Two",
+    "platform": "pc",
+    "image": "source/download.jpg",
+    "genres": [
+      "Action",
+      " Adventure",
+      " Co-op",
+      " Puzzle",
+      " Platformer"
+    ],
+    "description": "Game petualangan co-op yang menceritakan pasangan suami istri, Cody dan May, yang berubah menjadi boneka kecil dan harus bekerja sama untuk kembali ke tubuh mereka. Game ini menekankan kerja sama dua pemain dengan berbagai mekanik gameplay unik di setiap level.rnrnOriginal Link : https://www.elamigosweb.com/game/it-takes-two (ElAmigos)",
+    "price": "Free",
+    "year": 2021,
+    "developer": "Hazelight Studios",
+    "publisher": "Electronic Arts",
+    "req_min": {
+      "os": "Windows 8.1 64-bit / Windows 10 64-bit",
+      "processor": "Intel Core i3-2100T / AMD FX 6100",
+      "memory": "8 GB",
+      "graphics": "NVIDIA GeForce GTX 660 / AMD Radeon R7 260x",
+      "storage": "50 GB"
+    },
+    "req_rec": {
+      "os": "Windows 10 64-bit",
+      "processor": "Intel Core i5-3570K / AMD Ryzen 3 1300X",
+      "memory": "16 GB",
+      "graphics": "NVIDIA GeForce GTX 980 / AMD Radeon RX 590",
+      "storage": "50 GB"
+    },
+    "trailer": "https://www.youtube.com/embed/GAWHzGNcTEw",
+    "link": "#",
+    "is_parted": 1
+  },
+  {
+    "id": 6,
+    "title": "Detroit: Become Human",
+    "platform": "pc",
+    "image": "source/image.jpg",
+    "genres": [
+      "Adventure",
+      "  Interactive Story",
+      "  Sci-Fi",
+      "  Story Rich",
+      " Choices Matter"
+    ],
+    "description": "Detroit: Become Human adalah game cerita interaktif yang berlatar di masa depan, di mana android hidup berdampingan dengan manusia. Pemain mengendalikan tiga karakter android berbeda yaitu Kara, Connor, dan Markus yang masing-masing memiliki jalan cerita unik. Setiap pilihan yang diambil akan memengaruhi alur cerita dan menentukan berbagai kemungkinan ending.rnrnOriginal Link : https://www.ovagames.com/80456-detroit-become-human-codex.html (OvaGames)",
+    "price": "Free Download Available",
+    "year": 2018,
+    "developer": "Quantic Dream",
+    "publisher": "Sony Interactive Entertainment (PS4), Quantic Dream (PC)",
+    "req_min": {
+      "os": "Windows 10 (64-bit)",
+      "processor": "Intel Core i5-2300 / AMD FX-8350",
+      "memory": "8 GB",
+      "graphics": "NVIDIA GeForce GTX 780 / AMD Radeon HD 7950",
+      "storage": "55 GB"
+    },
+    "req_rec": {
+      "os": "Windows 10 / 11 (64-bit)",
+      "processor": "Intel Core i5-6600 / AMD Ryzen 3 1300X",
+      "memory": "12 GB",
+      "graphics": "NVIDIA GeForce GTX 1060 / AMD Radeon RX 580",
+      "storage": "55 GB"
+    },
+    "trailer": "https://www.youtube.com/embed/8a-EObAhYrg?si=Lrtw90BHqhpplkkH",
+    "link": "https://www.filecrypt.cc/Container/46E60B05E8.html",
+    "is_parted": 0
+  },
+  {
+    "id": 7,
+    "title": "Resident Evil 4 Remake",
+    "platform": "pc",
+    "image": "source/Resident-Evil-4-Remake-Wallpaper.jpg",
+    "genres": [
+      "Action",
+      "  Survival Horror",
+      "  Third-Person Shooter",
+      "  Adventure"
+    ],
+    "description": "Resident Evil 4 Remake adalah versi remake dari game klasik tahun 2005 dengan grafis modern dan gameplay yang diperbarui. Pemain mengikuti agen Leon S. Kennedy dalam misi menyelamatkan putri presiden yang diculik di sebuah desa misterius di Eropa. Game ini menghadirkan pengalaman survival horror yang lebih intens dengan visual realistis dan mekanik gameplay yang lebih halus.",
+    "price": "Free Download Available",
+    "year": 2023,
+    "developer": "Capcom",
+    "publisher": "Capcom",
+    "req_min": {
+      "os": "Windows 10 64-bit",
+      "processor": "Intel Core i5-7500 / AMD Ryzen 3 1200",
+      "memory": "8 GB",
+      "graphics": "NVIDIA GeForce GTX 1050 Ti / AMD Radeon RX 560",
+      "storage": "60 GB"
+    },
+    "req_rec": {
+      "os": "Windows 10 / 11 64-bit",
+      "processor": "Intel Core i7-8700 / AMD Ryzen 5 3600",
+      "memory": "16 GB",
+      "graphics": "NVIDIA GeForce GTX 1070 / AMD Radeon RX 5700",
+      "storage": "60 GB"
+    },
+    "trailer": "https://www.youtube.com/embed/Id2EaldBaWw",
+    "link": "https://drive.google.com/file/d/10nXsUJliPrse65Riq1ipF-A6qlG1M3IS/view?usp=drive_link",
+    "is_parted": 0
+  },
+  {
+    "id": 8,
+    "title": "Tekken 7 Ultimate Edition",
+    "platform": "pc",
+    "image": "source/TEKKEN7-men.jpg",
+    "genres": [
+      "Fighting",
+      "    Action"
+    ],
+    "description": "Tekken 7 merupakan seri ketujuh dari franchise game fighting legendaris yang menggunakan Unreal Engine 4. Game ini menutup saga perseteruan keluarga Mishima yang telah berlangsung lama. Dengan sistem baru seperti Rage Arts, Power Crushes, dan Rage Drives, game ini menawarkan mekanisme pertarungan yang intens baik untuk pemula maupun pemain profesional. Terdapat lebih dari 30 karakter, termasuk tamu spesial seperti Akuma dari Street Fighter dan Noctis dari Final Fantasy XV.rnrnPass: www.ovagames.comrnrnOriginal: https://www.ovagames.com/892255-tekken-7-ultimate-edition-multi11-elamigos.html (Ovagames)",
+    "price": "Tersedia",
+    "year": 2017,
+    "developer": "Bandai Namco Studios",
+    "publisher": "Bandai Namco Entertainment",
+    "req_min": {
+      "os": "Windows 7/8/10 (64-bit OS required)",
+      "processor": "tel Core i3-4160 @ 3.60GHz or equivalent",
+      "memory": "6 GB RAM",
+      "graphics": "NVIDIA GeForce GTX 660 2GB, GTX 750Ti 2GB, or equivalent",
+      "storage": "60 GB available space"
+    },
+    "req_rec": {
+      "os": "Windows 7/8/10 (64-bit OS required)",
+      "processor": "Intel Core i5-4690 3.5 GHz or equivalent",
+      "memory": "8 GB RAM",
+      "graphics": "NVIDIA GeForce GTX 1060 equivalent or higher",
+      "storage": "0 GB available space"
+    },
+    "trailer": "https://www.youtube.com/embed/kKLCwDg2JLA?si=P1LEfTc5_SVDfKzO",
+    "link": "https://www.filecrypt.cc/Container/0A29CBACFA.html",
+    "is_parted": 0
+  },
+  {
+    "id": 9,
+    "title": "Assassinâ€™s Creed Odyssey Gold Edition",
+    "platform": "pc",
+    "image": "source/ACOD_Standard_Capsule-1920x1080-a3ae1ed02ce5e7e9d13d8eb4558d07a959ce24ee.jpg",
+    "genres": [
+      "Action",
+      "      Adventure",
+      "      RPG",
+      "      Open World"
+    ],
+    "description": "Assassin's Creed Odyssey membawa pemain ke masa Yunani Kuno di tengah Perang Peloponnesos. Kamu bisa memilih bermain sebagai Alexios atau Kassandra, seorang tentara bayaran (Misthios) yang mencari kebenaran tentang keluarganya. Game ini memperkenalkan elemen RPG yang kental seperti pilihan dialog yang mempengaruhi cerita, kustomisasi perlengkapan yang mendalam, dan pertempuran laut yang epik. Visual dunianya sangat memukau, mulai dari patung-patung dewa yang raksasa hingga laut Aegea yang jernih.rnrnOriginal: https://www.ovagames.com/536665-assassins-creed-odyssey-gold-edition-multi15-elamigos.html (Ovagames)rnrnPass: www.ovagames.com",
+    "price": "Free Download Available",
+    "year": 2018,
+    "developer": "Ubisoft Quebec",
+    "publisher": "Ubisoft",
+    "req_min": {
+      "os": "Windows 7 SP1, Windows 8.1, Windows 10 (64-bit versions only)",
+      "processor": "AMD FX 6300 @ 3.8 GHz, Ryzen 3 - 1200, Intel Core i5 2400 @ 3.1 GHz",
+      "memory": "8 GB RAM",
+      "graphics": "AMD Radeon R9 285, NVIDIA GeForce GTX 660 (2GB VRAM with Shader Model 5.0)",
+      "storage": "46 GB available space"
+    },
+    "req_rec": {
+      "os": "Windows 10 (64-bit versions only)",
+      "processor": "AMD FX-8350 @ 4.0 GHz, Ryzen 5 - 1400, Intel Core i7-3770 @ 3.5 GHz",
+      "memory": "8 GB RAM",
+      "graphics": "AMD Radeon R9 290, NVIDIA GeForce GTX 970 (4GB VRAM with Shader Model 5.0)",
+      "storage": "46 GB available space"
+    },
+    "trailer": "https://www.youtube.com/embed/6F8L3d_OIE0?si=QsO5sa6MWX57AofL",
+    "link": "https://www.filecrypt.cc/Container/1C084D9FB4.html",
+    "is_parted": 0
+  },
+  {
+    "id": 10,
+    "title": "Watch Dogs Complete Edition",
+    "platform": "pc",
+    "image": "source/watch-dogs-pc-game-ubisoft-connect-europe-cover.jpg",
+    "genres": [
+      "Action",
+      "   Adventure",
+      "   Open World",
+      "   Stealth"
+    ],
+    "description": "Di Watch Dogs, kamu berperan sebagai Aiden Pearce, seorang *hacker* brilian sekaligus mantan kriminal yang mencari keadilan setelah tragedi keluarganya. Berlatar di Chicago yang dikendalikan oleh sistem operasi pusat bernama ctOS, kamu bisa meretas hampir semua hal: lampu lalu lintas, kamera pengawas, jembatan, hingga data pribadi penduduk. Game ini memadukan aksi tembak-menembak yang intens dengan elemen stealth dan kemahiran teknologi untuk memanipulasi lingkungan kota sebagai senjata utamamu.",
+    "price": "Free Download Available",
+    "year": 2014,
+    "developer": "Ubisoft Montreal",
+    "publisher": "Ubisoft",
+    "req_min": {
+      "os": "Windows Vista (SP2), Windows 7 (SP1) or Windows 8 (64 bit only)",
+      "processor": "Intel Core 2 Quad Q8400 @ 2.66Ghz or AMD Phenom II X4 940 @ 3.0Ghz",
+      "memory": "6 GB RAM",
+      "graphics": "NVIDIA GeForce GTX 460 or AMD Radeon HD 5770 (1GB VRAM dengan DirectX 11)",
+      "storage": "25 GB available space"
+    },
+    "req_rec": {
+      "os": "Windows 7 (SP1) or Windows 8 (64 bit only)",
+      "processor": "Intel Core i7-3770 @ 3.5 GHz or AMD FX-8350 @ 4.0 GHz",
+      "memory": "8 GB RAM",
+      "graphics": "NVIDIA GeForce GTX 560 ti or AMD Radeon HD 7850 (2GB VRAM atau lebih)",
+      "storage": "25 GB available space"
+    },
+    "trailer": "https://www.youtube.com/embed/PFko4Kut39s?si=_YeHmgRD40Yz-Cbg",
+    "link": "https://drive.google.com/file/d/1DjquPoZA9mPuO7lq3QV_E5sHFof-0qLD/view?usp=drive_link",
+    "is_parted": 0
+  }
+]
