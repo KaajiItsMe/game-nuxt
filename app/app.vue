@@ -45,6 +45,11 @@
     <!-- Page Content with Transitions -->
     <NuxtPage :transition="{ name: 'page', mode: 'out-in' }" />
 
+    <!-- Adsterra Native Banner / Smartlink Area -->
+    <div class="container my-4 text-center">
+      <iframe src="/ad-banner-1.html" width="100%" height="90" frameborder="0" scrolling="no" style="max-width: 100%; overflow: hidden;"></iframe>
+    </div>
+
     <!-- Global Footer -->
     <footer class="global-footer">
       <div class="container">

@@ -61,6 +61,11 @@
               {{ reportingLink ? '⏳' : '⚠️ Lapor Link Rusak' }}
             </button>
           </div>
+
+          <!-- Adsterra 300x250 Banner -->
+          <div class="mt-4" style="min-height: 250px;">
+            <iframe src="/ad-banner-300x250.html" width="300" height="250" frameborder="0" scrolling="no" style="border-radius: 12px; overflow: hidden; max-width: 100%;"></iframe>
+          </div>
         </div>
       </div>
 

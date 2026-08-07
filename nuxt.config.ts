@@ -23,9 +23,8 @@ export default defineNuxtConfig({
         { src: 'https://code.jquery.com/jquery-3.5.1.slim.min.js', defer: true },
         { src: 'https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js', defer: true },
         { src: 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', defer: true },
-        { src: 'https://pl29073817.profitablecpmratenetwork.com/b28996aa6120341251129c15fe0b2824/invoke.js', async: true, 'data-cfasync': 'false' },
-        { src: 'https://pl29073818.profitablecpmratenetwork.com/83/5c/9d/835c9da95a9576b968d02c73fe357239.js', async: true },
-        { src: 'https://www.highperformanceformat.com/47217ab3a87e7a0f6188604c5507efc9/invoke.js', async: true }
+        { src: 'https://pl30740846.effectivecpmnetwork.com/9c/b0/ca/9cb0cab9388d704be1c5223fab7d47a7.js', defer: true },
+        { src: 'https://pl30740852.effectivecpmnetwork.com/89/30/f6/8930f630e17a962d87af30f17a4452bb.js', defer: true }
       ]
     }
   },
