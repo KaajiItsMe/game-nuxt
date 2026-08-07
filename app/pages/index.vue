@@ -1,21 +1,18 @@
 <template>
   <div class="pb-5">
-    <!-- Hero Header -->
-    <div class="text-center py-5 px-3" style="padding-top: 60px !important;">
-      <p class="section-label">🎮 SEMUA GAME</p>
-      <h1 class="section-title" style="font-family: 'BigSpace'; letter-spacing: 3px; font-size: clamp(2.5rem, 6vw, 4.5rem);">
-        Jelajahi <span class="text-gradient">Katalog</span>
-      </h1>
-      <p class="section-subtitle mb-5">Temukan ratusan game premium siap diunduh untuk PC &amp; Konsol</p>
-
-      <!-- Search Bar -->
-      <div class="container">
-        <div class="col-md-7 mx-auto">
+    <!-- Search & Header -->
+    <div class="container pt-4 pb-3">
+      <div class="row align-items-center">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <h2 class="text-white m-0" style="font-weight: 700; font-size: 1.5rem;">Terbaru Di <span class="text-gradient">Game25</span></h2>
+        </div>
+        <div class="col-md-6">
           <input
             type="text"
             v-model="searchQuery"
-            class="search-modern"
-            placeholder="🔍  Cari game favoritmu (cth: Resident Evil, Racing...)"
+            class="search-modern w-100"
+            placeholder="Cari game..."
+            style="padding: 10px 20px; font-size: 0.95rem; background: var(--color-card);"
           >
         </div>
       </div>

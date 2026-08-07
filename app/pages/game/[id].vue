@@ -1,9 +1,5 @@
 <template>
-  <div v-if="game" class="position-relative min-vh-100">
-    <!-- Blurred Background -->
-    <div class="detail-bg-blur" :style="{ backgroundImage: `url('/${game.image}')` }"></div>
-    <div class="detail-bg-overlay"></div>
-
+  <div v-if="game" class="position-relative min-vh-100 bg-wallpaper">
     <div class="container position-relative py-5" style="z-index: 10;">
       <!-- Back Button -->
       <div class="mb-4 d-flex align-items-center justify-content-between">
@@ -332,24 +328,6 @@ const reportBrokenLink = async () => {
 </script>
 
 <style scoped>
-.detail-bg-blur {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background-size: cover;
-  background-position: center;
-  filter: blur(20px);
-  transform: scale(1.1);
-  z-index: 1;
-  pointer-events: none;
-}
-.detail-bg-overlay {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: linear-gradient(to bottom, rgba(15, 23, 42, 0.7) 0%, rgba(15, 23, 42, 1) 100%);
-  z-index: 2;
-  pointer-events: none;
-}
+/* Removed blur background */
 </style>
 
