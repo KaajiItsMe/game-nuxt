@@ -4,7 +4,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark glass-nav">
       <div class="container">
         <NuxtLink class="navbar-brand font-weight-bold text-white" to="/" style="font-family: 'BigSpace'; font-size: 1.5rem; letter-spacing: 2px;">
-          Game<span class="text-gradient">25</span>
+          Agame<span class="text-gradient">25</span>
         </NuxtLink>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
           <span class="navbar-toggler-icon"></span>
@@ -30,7 +30,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-4 mb-4">
-            <div class="footer-brand">Game<span class="text-gradient">25</span></div>
+            <div class="footer-brand">Agame<span class="text-gradient">25</span></div>
             <p class="footer-tagline mt-2">Platform katalog game premium untuk PC &amp; Konsol. Download gratis, mainkan tanpa batas.</p>
           </div>
           <div class="col-md-2 offset-md-2 mb-4">

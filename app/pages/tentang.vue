@@ -6,7 +6,7 @@
       <div class="container position-relative" style="z-index: 2;">
         <p class="section-label animate-fadeInUp">🏢 SIAPA KAMI</p>
         <h1 class="animate-fadeInUp-d2" style="font-family: 'BigSpace'; font-size: clamp(3rem, 8vw, 6rem); letter-spacing: 4px; margin-bottom: 16px;">
-          Game<span class="text-gradient-animated">25</span>
+          Agame<span class="text-gradient-animated">25</span>
         </h1>
         <p class="section-subtitle animate-fadeInUp-d3">
           Platform katalog game premium untuk PC &amp; Konsol — gratis, lengkap, dan selalu diperbarui.

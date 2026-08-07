@@ -1,10 +1,73 @@
 <template>
   <div class="pb-5">
+    <!-- Hero Slider (Featured Game) -->
+    <div v-if="featuredGame" class="hero-slider-container mb-5">
+      <div class="hero-slider-bg">
+        <img :src="`/${featuredGame.image}`" :alt="featuredGame.title">
+      </div>
+      <div class="hero-slider-content container py-5">
+        <div class="row align-items-center h-100">
+          <div class="col-lg-8">
+            <h1 class="hero-game-title">{{ featuredGame.title }}</h1>
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              <span class="badge-genre" style="background: rgba(16,185,129,0.2); color: #10b981; border: 1px solid #10b981;">V 1.0</span>
+              <span class="badge-genre" style="background: rgba(255,255,255,0.1); color: white;">{{ featuredGame.platform }}</span>
+              <span class="badge-genre" style="background: rgba(255,255,255,0.1); color: white;">{{ featuredGame.year }}</span>
+            </div>
+            <p class="hero-game-desc mb-4">
+              {{ featuredGame.description?.substring(0, 150) || 'Game premium seru yang wajib kamu mainkan! Download secara gratis dan nikmati keseruannya sekarang juga.' }}...
+            </p>
+            <div class="d-flex flex-wrap gap-3">
+              <NuxtLink :to="`/game/${featuredGame.id}`" class="hero-btn-primary">
+                Download Now &rarr;
+              </NuxtLink>
+              <NuxtLink :to="`/game/${featuredGame.id}`" class="hero-btn-secondary">
+                Details &rsaquo;
+              </NuxtLink>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Social Buttons (Dihide sementara karena belum ada link) -->
+    <div class="container mb-5" v-if="false">
+      <div class="social-btn-container">
+        <a href="#" class="social-btn discord">
+          <div class="social-btn-icon">🎮</div>
+          <div class="social-btn-text">
+            <span>Join us on</span>
+            Discord
+          </div>
+        </a>
+        <a href="#" class="social-btn reddit">
+          <div class="social-btn-icon">🔥</div>
+          <div class="social-btn-text">
+            <span>Follow us on</span>
+            Reddit
+          </div>
+        </a>
+        <a href="#" class="social-btn nebulo">
+          <div class="social-btn-icon">👥</div>
+          <div class="social-btn-text">
+            <span>Member of</span>
+            Nebulo
+          </div>
+        </a>
+        <a href="#" class="social-btn donate">
+          <div class="social-btn-icon">💰</div>
+          <div class="social-btn-text">
+            <span>Support us with</span>
+            Donations
+          </div>
+        </a>
+      </div>
+    </div>
     <!-- Search & Header -->
     <div class="container pt-4 pb-3">
       <div class="row align-items-center">
         <div class="col-md-6 mb-3 mb-md-0">
-          <h2 class="text-white m-0" style="font-weight: 700; font-size: 1.5rem;">Terbaru Di <span class="text-gradient">Game25</span></h2>
+          <h2 class="section-heading m-0">Trending Games</h2>
         </div>
         <div class="col-md-6">
           <input
@@ -123,6 +186,15 @@ const sortBy = ref('default')
 const genreFilter = ref(route.query.genre || '')
 
 const platforms = ['Semua', 'PC', 'PS2', 'PS3']
+
+// Featured Game for Hero
+const featuredGame = computed(() => {
+  if (games.value && games.value.length > 0) {
+    // Return the latest game (assuming sorted or just first item)
+    return games.value[0]
+  }
+  return null
+})
 
 const { data: games, pending } = await useAsyncData('games', async () => {
   const { data: allGames } = await supabase.from('games').select('*')
