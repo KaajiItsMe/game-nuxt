@@ -1,0 +1,10 @@
+[build]
+  command = "npm run generate"
+  publish = ".output/public"
+
+# Aturan ini memastikan kalau ada halaman yang direfresh (misal /tentang), 
+# Netlify tidak akan mengembalikan error 404, melainkan tetap memuat aplikasinya.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
