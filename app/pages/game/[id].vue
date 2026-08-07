@@ -7,7 +7,7 @@
     <div class="container position-relative py-5" style="z-index: 10;">
       <!-- Back Button -->
       <div class="mb-4 d-flex align-items-center justify-content-between">
-        <NuxtLink to="/menu" class="btn btn-outline-light rounded-pill px-4 font-weight-bold" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(5px);">
+        <NuxtLink to="/" class="btn btn-outline-light rounded-pill px-4 font-weight-bold" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(5px);">
           &larr; Kembali ke Katalog
         </NuxtLink>
         <button class="btn-share" @click="shareGame">
@@ -32,7 +32,7 @@
             <NuxtLink
               v-for="genre in (game.genres || [])"
               :key="genre"
-              :to="`/menu?genre=${encodeURIComponent(genre.trim())}`"
+              :to="`/?genre=${encodeURIComponent(genre.trim())}`"
               class="badge-genre"
               style="text-decoration:none;"
               @click.prevent="goToGenre(genre.trim())"
@@ -248,7 +248,7 @@ const shareGame = () => {
 // Navigate to catalog with genre filter
 const router = useRouter()
 const goToGenre = (genre) => {
-  router.push({ path: '/menu', query: { genre } })
+  router.push({ path: '/', query: { genre } })
 }
 
 // Format Date

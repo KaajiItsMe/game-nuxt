@@ -1,171 +1,139 @@
 <template>
-  <div>
-    <!-- ===== HERO SECTION ===== -->
-    <section class="hero-section">
-      <div class="hero-bg-decoration top-right"></div>
-      <div class="hero-bg-decoration bottom-left"></div>
+  <div class="pb-5">
+    <!-- Hero Header -->
+    <div class="text-center py-5 px-3" style="padding-top: 60px !important;">
+      <p class="section-label">🎮 SEMUA GAME</p>
+      <h1 class="section-title" style="font-family: 'BigSpace'; letter-spacing: 3px; font-size: clamp(2.5rem, 6vw, 4.5rem);">
+        Jelajahi <span class="text-gradient">Katalog</span>
+      </h1>
+      <p class="section-subtitle mb-5">Temukan ratusan game premium siap diunduh untuk PC &amp; Konsol</p>
 
-      <div class="container position-relative" style="z-index: 2;">
-        <div class="animate-fadeInUp">
-          <p class="section-label animate-fadeInUp-d1">🎮 PLATFORM GAMING PREMIUM</p>
-          <h1 class="animate-fadeInUp-d2" style="font-family: 'BigSpace'; font-size: clamp(4rem, 10vw, 9rem); font-weight: 900; letter-spacing: 4px; line-height: 1; margin-bottom: 24px;">
-            Game<span class="text-gradient-animated">25</span>
-          </h1>
-          <p class="animate-fadeInUp-d3" style="color: #94a3b8; font-size: clamp(1rem, 2vw, 1.3rem); max-width: 600px; margin: 0 auto 40px; line-height: 1.8;">
-            Destinasi utama Anda untuk mengunduh game premium PC &amp; Konsol.<br>
-            Gratis, lengkap, dan selalu diperbarui.
-          </p>
-          <div class="animate-fadeInUp-d4 d-flex flex-wrap justify-content-center" style="gap: 16px;">
-            <NuxtLink to="/menu" class="btn btn-beli btn-lg px-5 py-3 font-weight-bold rounded-pill">
-              🚀 Jelajahi Katalog
-            </NuxtLink>
-            <NuxtLink to="/tentang" class="btn btn-outline-light btn-lg px-5 py-3 font-weight-bold rounded-pill" style="border-color: rgba(255,255,255,0.2);">
-              Tentang Kami
-            </NuxtLink>
-          </div>
+      <!-- Search Bar -->
+      <div class="container">
+        <div class="col-md-7 mx-auto">
+          <input
+            type="text"
+            v-model="searchQuery"
+            class="search-modern"
+            placeholder="🔍  Cari game favoritmu (cth: Resident Evil, Racing...)"
+          >
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- ===== STATS BAR ===== -->
-    <section class="stats-bar animate-fadeIn">
-      <div class="container">
-        <div class="d-flex flex-wrap justify-content-center align-items-center">
-          <div class="stat-item">
-            <div class="stat-number">335+</div>
-            <div class="stat-label">Game Tersedia</div>
-          </div>
-          <div class="stat-divider d-none d-md-block mx-4"></div>
-          <div class="stat-item">
-            <div class="stat-number">3</div>
-            <div class="stat-label">Platform</div>
-          </div>
-          <div class="stat-divider d-none d-md-block mx-4"></div>
-          <div class="stat-item">
-            <div class="stat-number">100%</div>
-            <div class="stat-label">Gratis</div>
-          </div>
-          <div class="stat-divider d-none d-md-block mx-4"></div>
-          <div class="stat-item">
-            <div class="stat-number">2026</div>
-            <div class="stat-label">Diperbarui</div>
-          </div>
+    <!-- Filter & Sort Bar -->
+    <div class="container mb-4">
+      <div class="d-flex flex-wrap align-items-center justify-content-between">
+        <!-- Platform Filter -->
+        <div class="mb-2">
+          <button
+            v-for="p in platforms"
+            :key="p"
+            class="filter-btn"
+            :class="{ active: activePlatform === p }"
+            @click="activePlatform = p"
+          >{{ p }}</button>
+        </div>
+        <!-- Sort -->
+        <div class="mb-2">
+          <select v-model="sortBy" class="input-modern" style="border-radius: 50px !important; padding: 8px 20px !important; font-size: 0.875rem !important; cursor: pointer;">
+            <option value="default">Urutan Default</option>
+            <option value="az">A → Z</option>
+            <option value="za">Z → A</option>
+            <option value="year_desc">Tahun Terbaru</option>
+            <option value="year_asc">Tahun Terlama</option>
+          </select>
         </div>
       </div>
-    </section>
+      <!-- Result Count -->
+      <div class="d-flex align-items-center flex-wrap" style="gap: 8px;">
+        <p class="mt-2 mb-0" style="color: #475569; font-size: 0.875rem;">
+          Menampilkan <strong class="text-white">{{ filteredGames.length }}</strong> dari <strong class="text-white">{{ games?.length || 0 }}</strong> game
+        </p>
+        <span v-if="genreFilter" class="filter-btn active ml-2" style="padding: 4px 14px; font-size: 0.8rem; cursor:pointer;" @click="genreFilter = ''">
+          🏷 {{ genreFilter }} &times;
+        </span>
+      </div>
+    </div>
 
-    <!-- ===== FEATURED GAMES ===== -->
-    <section class="py-5" style="padding: 80px 0 !important;">
-      <div class="container">
-        <div class="text-center mb-5">
-          <p class="section-label">⭐ PILIHAN KAMI</p>
-          <h2 class="section-title">Game Unggulan</h2>
-          <p class="section-subtitle">Koleksi terbaik dari berbagai genre yang wajib Anda mainkan</p>
-        </div>
-
-        <div v-if="loading" class="row">
-          <div v-for="n in 6" :key="n" class="col-lg-2 col-md-4 col-6 mb-4">
-            <div class="skeleton-card">
-              <div class="skeleton skeleton-img"></div>
-              <div class="p-3">
-                <div class="skeleton skeleton-line w-full"></div>
-                <div class="skeleton skeleton-line w-3/4"></div>
-              </div>
+    <!-- Games Grid -->
+    <div class="container">
+      <!-- Skeleton Loader -->
+      <div v-if="pending" class="row">
+        <div v-for="n in 12" :key="n" class="col-lg-3 col-md-4 col-6 mb-5">
+          <div class="skeleton-card">
+            <div class="skeleton skeleton-img"></div>
+            <div class="p-3">
+              <div class="skeleton skeleton-line w-full"></div>
+              <div class="skeleton skeleton-line w-3/4"></div>
+              <div class="skeleton skeleton-line w-1/2"></div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div v-else class="row">
-          <div v-for="game in featuredGames" :key="game.id" class="col-lg-2 col-md-4 col-6 mb-4">
-            <NuxtLink :to="`/game/${game.id}`" class="similar-card text-decoration-none position-relative">
-              <span v-if="isNew(game.created_at)" class="badge-new" style="top: 5px; left: 5px; font-size: 0.65rem; padding: 2px 6px;">NEW</span>
-              <img :src="`/${game.image}`" :alt="game.title">
-              <div class="similar-card-body">
-                <p class="similar-card-title">{{ game.title }}</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <span class="similar-card-platform">{{ game.platform }}</span>
-                  <span v-if="game.avgRating > 0" style="font-size: 0.8rem; color: #fbbf24;">⭐ {{ game.avgRating.toFixed(1) }}</span>
+      <!-- Games -->
+      <div v-else class="row" id="game-list">
+        <div v-for="game in filteredGames" :key="game.id" class="col-lg-3 col-md-4 col-6 mb-5">
+          <NuxtLink :to="`/game/${game.id}`" class="text-decoration-none">
+            <div class="card h-100 game-card glass-card border-0 position-relative">
+              <span class="badge-platform">{{ game.platform }}</span>
+              <span v-if="isNew(game.created_at)" class="badge-new">🔥 NEW</span>
+              <div class="img-container">
+                <img :src="`/${game.image}`" class="card-img-top w-100" :alt="game.title" style="aspect-ratio: 16/9; object-fit: cover;">
+              </div>
+              <div class="card-body d-flex flex-column justify-content-between pb-3">
+                <h5 class="card-title text-white font-weight-bold mb-2" style="font-size: 1rem; line-height: 1.4;">{{ game.title }}</h5>
+                <div>
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <small class="text-muted d-block">{{ game.year }}</small>
+                    <span v-if="game.avgRating > 0" style="font-size: 0.8rem; color: #fbbf24;">⭐ {{ game.avgRating.toFixed(1) }}</span>
+                  </div>
+                  <div class="genres">
+                    <span
+                      v-for="genre in (game.genres || []).slice(0, 2)"
+                      :key="genre"
+                      class="badge-genre"
+                      @click.prevent="setGenreFilter(genre.trim())"
+                    >{{ genre.trim() }}</span>
+                  </div>
                 </div>
               </div>
-            </NuxtLink>
-          </div>
-        </div>
-
-        <div class="text-center mt-4">
-          <NuxtLink to="/menu" class="btn btn-outline-light rounded-pill px-5 py-2" style="border-color: rgba(255,255,255,0.15);">
-            Lihat Semua Game →
+            </div>
           </NuxtLink>
         </div>
-      </div>
-    </section>
 
-    <!-- ===== WHY US / FEATURES ===== -->
-    <section style="padding: 80px 0; background: rgba(15,23,42,0.4);">
-      <div class="container">
-        <div class="text-center mb-5">
-          <p class="section-label">💡 KEUNGGULAN KAMI</p>
-          <h2 class="section-title">Kenapa Pilih Agame25?</h2>
-          <p class="section-subtitle">Kami berkomitmen memberikan pengalaman gaming terbaik untuk Anda</p>
-        </div>
-        <div class="row">
-          <div class="col-md-4 mb-4">
-            <div class="feature-card">
-              <div class="feature-icon">🆓</div>
-              <h4>100% Gratis</h4>
-              <p>Semua game yang tersedia dapat diunduh secara gratis tanpa biaya berlangganan atau pembelian tersembunyi.</p>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="feature-card">
-              <div class="feature-icon">📚</div>
-              <h4>Katalog Lengkap</h4>
-              <p>Lebih dari 335 judul game dari berbagai genre — Action, RPG, Racing, Horror, dan masih banyak lagi.</p>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="feature-card">
-              <div class="feature-icon">⚡</div>
-              <h4>Info Lengkap</h4>
-              <p>Spesifikasi sistem, trailer resmi, panduan komunitas, dan komentar pengguna tersedia di setiap game.</p>
-            </div>
-          </div>
+        <div v-if="filteredGames.length === 0 && !pending" class="col-12 text-center py-5">
+          <div style="font-size: 4rem; margin-bottom: 16px;">🔍</div>
+          <h3 class="text-white">Game tidak ditemukan.</h3>
+          <p style="color: #475569;">Coba kata kunci atau filter yang berbeda.</p>
+          <button class="btn btn-outline-light rounded-pill px-4 mt-2" @click="resetFilter">Reset Filter</button>
         </div>
       </div>
-    </section>
-
-    <!-- ===== CTA BANNER ===== -->
-    <section style="padding: 80px 0;">
-      <div class="container">
-        <div class="cta-banner">
-          <div class="position-relative" style="z-index: 2;">
-            <p class="section-label">🎯 SIAP BERMAIN?</p>
-            <h2 class="section-title">Temukan Game Impianmu</h2>
-            <p class="section-subtitle mb-4">Lebih dari 335 game menunggu untuk Anda jelajahi sekarang.</p>
-            <NuxtLink to="/menu" class="btn btn-beli btn-lg px-5 py-3 font-weight-bold rounded-pill">
-              Mulai Jelajahi →
-            </NuxtLink>
-          </div>
-        </div>
-      </div>
-    </section>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const supabase = useSupabaseClient()
-const loading = ref(true)
-const featuredGames = ref([])
+const route = useRoute()
 
-const { data } = await useAsyncData('featured-games', async () => {
-  const { data: games } = await supabase.from('games').select('id, title, image, platform, created_at').limit(6)
+const searchQuery = ref('')
+const activePlatform = ref('Semua')
+const sortBy = ref('default')
+const genreFilter = ref(route.query.genre || '')
+
+const platforms = ['Semua', 'PC', 'PS2', 'PS3']
+
+const { data: games, pending } = await useAsyncData('games', async () => {
+  const { data: allGames } = await supabase.from('games').select('*')
   
-  if (games && games.length > 0) {
-    const gameIds = games.map(g => g.id)
-    const { data: comments } = await supabase.from('comments').select('game_id, rating').in('game_id', gameIds)
+  if (allGames && allGames.length > 0) {
+    const { data: comments } = await supabase.from('comments').select('game_id, rating')
     
-    return games.map(game => {
+    return allGames.map(game => {
       const gameComments = comments?.filter(c => c.game_id === game.id) || []
       const avgRating = gameComments.length > 0 
         ? gameComments.reduce((sum, c) => sum + c.rating, 0) / gameComments.length 
@@ -176,18 +144,62 @@ const { data } = await useAsyncData('featured-games', async () => {
   return []
 })
 
+const filteredGames = computed(() => {
+  if (!games.value) return []
+  let list = [...games.value]
+
+  // Platform filter
+  if (activePlatform.value !== 'Semua') {
+    list = list.filter(g => g.platform?.toUpperCase() === activePlatform.value.toUpperCase())
+  }
+
+  // Genre filter (from clicking badge)
+  if (genreFilter.value) {
+    list = list.filter(g => g.genres && g.genres.some(genre => genre.trim().toLowerCase() === genreFilter.value.toLowerCase()))
+  }
+
+  // Search filter
+  if (searchQuery.value) {
+    const q = searchQuery.value.toLowerCase()
+    list = list.filter(g =>
+      g.title?.toLowerCase().includes(q) ||
+      (g.genres && g.genres.some(genre => genre.toLowerCase().includes(q)))
+    )
+  }
+
+  // Sort
+  if (sortBy.value === 'az') list.sort((a, b) => a.title.localeCompare(b.title))
+  else if (sortBy.value === 'za') list.sort((a, b) => b.title.localeCompare(a.title))
+  else if (sortBy.value === 'year_desc') list.sort((a, b) => (b.year || 0) - (a.year || 0))
+  else if (sortBy.value === 'year_asc') list.sort((a, b) => (a.year || 0) - (b.year || 0))
+
+  return list
+})
+
+const resetFilter = () => {
+  searchQuery.value = ''
+  activePlatform.value = 'Semua'
+  sortBy.value = 'default'
+  genreFilter.value = ''
+}
+
+const setGenreFilter = (genre) => {
+  genreFilter.value = genreFilter.value === genre ? '' : genre
+  searchQuery.value = ''
+}
+
 const isNew = (dateStr) => {
   if (!dateStr) return false
   const diffTime = Math.abs(new Date() - new Date(dateStr))
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
   return diffDays <= 7
 }
-
-featuredGames.value = data.value || []
-loading.value = false
 </script>
 
 <style scoped>
+.card-hover-effect {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 .badge-new {
   position: absolute;
   top: 10px;

@@ -15,9 +15,6 @@
               <NuxtLink class="nav-link font-weight-bold" to="/" exact-active-class="text-white">Home</NuxtLink>
             </li>
             <li class="nav-item">
-              <NuxtLink class="nav-link font-weight-bold" to="/menu" active-class="text-white">Katalog</NuxtLink>
-            </li>
-            <li class="nav-item">
               <NuxtLink class="nav-link font-weight-bold" to="/tentang" active-class="text-white">Tentang</NuxtLink>
             </li>
           </ul>
@@ -38,8 +35,7 @@
           </div>
           <div class="col-md-2 offset-md-2 mb-4">
             <p class="footer-heading">Navigasi</p>
-            <NuxtLink to="/" class="footer-link">Home</NuxtLink>
-            <NuxtLink to="/menu" class="footer-link">Katalog Game</NuxtLink>
+            <NuxtLink to="/" class="footer-link">Home / Katalog</NuxtLink>
             <NuxtLink to="/tentang" class="footer-link">Tentang Kami</NuxtLink>
           </div>
           <div class="col-md-3 mb-4">
