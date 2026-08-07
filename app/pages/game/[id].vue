@@ -61,6 +61,9 @@
               ⬇ Download Sekarang
             </a>
             <span v-else class="text-muted">Link belum tersedia</span>
+            <button v-if="game.link" class="btn btn-outline-danger px-3 py-2 font-weight-bold" @click="reportBrokenLink" :disabled="reportingLink" style="border-radius: 8px; font-size: 0.9rem;" title="Lapor jika link download mati">
+              {{ reportingLink ? '⏳' : '⚠️ Lapor Link Rusak' }}
+            </button>
           </div>
         </div>
       </div>
@@ -172,30 +175,7 @@
 
       <!-- TAB: GUIDES -->
       <div v-if="activeTab === 'guides'">
-        <!-- Form Guide -->
-        <div class="form-modern mb-5">
-          <h5 class="text-white font-weight-bold mb-4" style="font-family: 'Outfit';">📝 Tambah Panduan / Tips</h5>
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label class="label-modern">Judul Panduan</label>
-              <input v-model="newGuide.title" type="text" class="form-control input-modern" placeholder="cth: Cara Install, Cheat Codes...">
-            </div>
-            <div class="col-md-6 mb-3">
-              <label class="label-modern">Nama Penulis</label>
-              <input v-model="newGuide.author" type="text" class="form-control input-modern" placeholder="Nama Kamu">
-            </div>
-            <div class="col-12 mb-3">
-              <label class="label-modern">Isi Panduan</label>
-              <textarea v-model="newGuide.content" class="form-control input-modern" rows="5" placeholder="Tulis tips, cara install, cheat code, atau panduan bermain di sini..."></textarea>
-            </div>
-            <div class="col-12">
-              <button class="btn btn-beli px-4 py-2" @click="submitGuide" :disabled="submittingGuide">
-                {{ submittingGuide ? 'Mengirim...' : '📤 Tambah Panduan' }}
-              </button>
-              <span v-if="guideSuccess" class="ml-3 text-success">✅ Panduan berhasil ditambahkan!</span>
-            </div>
-          </div>
-        </div>
+        <!-- Form Guide Dihapus (Hanya Admin) -->
 
         <!-- Daftar Guide -->
         <div v-if="guides.length === 0" class="text-center py-5 glass-card rounded-lg">
@@ -335,28 +315,19 @@ const submitComment = async () => {
   setTimeout(() => commentSuccess.value = false, 3000)
 }
 
-// New Guide form
-const newGuide = ref({ title: '', content: '', author: '' })
-const submittingGuide = ref(false)
-const guideSuccess = ref(false)
+// Report Broken Link
+const reportingLink = ref(false)
 
-const submitGuide = async () => {
-  if (!newGuide.value.title.trim() || !newGuide.value.content.trim()) {
-    alert('Judul dan isi panduan tidak boleh kosong.')
-    return
+const reportBrokenLink = async () => {
+  if (confirm('Apakah kamu yakin ingin melaporkan bahwa link download game ini rusak/mati?')) {
+    reportingLink.value = true
+    await supabase.from('reports').insert({
+      game_id: id,
+      game_title: game.value.title
+    })
+    reportingLink.value = false
+    alert('Terima kasih! Laporan link rusak berhasil dikirim dan akan segera diperbaiki.')
   }
-  submittingGuide.value = true
-  await supabase.from('guides').insert({
-    game_id: id,
-    title: newGuide.value.title,
-    content: newGuide.value.content,
-    author: newGuide.value.author || 'Anonymous'
-  })
-  newGuide.value = { title: '', content: '', author: '' }
-  guideSuccess.value = true
-  await refreshGuides()
-  submittingGuide.value = false
-  setTimeout(() => guideSuccess.value = false, 3000)
 }
 </script>
 

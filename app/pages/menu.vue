@@ -76,8 +76,9 @@
       <div v-else class="row" id="game-list">
         <div v-for="game in filteredGames" :key="game.id" class="col-lg-3 col-md-4 col-6 mb-5">
           <NuxtLink :to="`/game/${game.id}`" class="text-decoration-none">
-            <div class="card h-100 game-card glass-card border-0">
+            <div class="card h-100 game-card glass-card border-0 position-relative">
               <span class="badge-platform">{{ game.platform }}</span>
+              <span v-if="isNew(game.created_at)" class="badge-new">🔥 NEW</span>
               <div class="img-container">
                 <img :src="`/${game.image}`" class="card-img-top w-100" :alt="game.title" style="aspect-ratio: 16/9; object-fit: cover;">
               </div>
@@ -139,7 +140,7 @@ const filteredGames = computed(() => {
 
   // Genre filter (from clicking badge)
   if (genreFilter.value) {
-    list = list.filter(g => g.genres && g.genres.some(genre => genre.toLowerCase() === genreFilter.value.toLowerCase()))
+    list = list.filter(g => g.genres && g.genres.some(genre => genre.trim().toLowerCase() === genreFilter.value.toLowerCase()))
   }
 
   // Search filter
@@ -171,11 +172,31 @@ const setGenreFilter = (genre) => {
   genreFilter.value = genreFilter.value === genre ? '' : genre
   searchQuery.value = ''
 }
+
+const isNew = (dateStr) => {
+  if (!dateStr) return false
+  const diffTime = Math.abs(new Date() - new Date(dateStr))
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+  return diffDays <= 7
+}
 </script>
 
 <style scoped>
 .card-hover-effect {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.badge-new {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: linear-gradient(45deg, #ef4444, #f97316);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  z-index: 2;
+  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.4);
 }
 </style>
 

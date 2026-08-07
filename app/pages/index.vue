@@ -77,7 +77,8 @@
 
         <div v-else class="row">
           <div v-for="game in featuredGames" :key="game.id" class="col-lg-2 col-md-4 col-6 mb-4">
-            <NuxtLink :to="`/game/${game.id}`" class="similar-card text-decoration-none">
+            <NuxtLink :to="`/game/${game.id}`" class="similar-card text-decoration-none position-relative">
+              <span v-if="isNew(game.created_at)" class="badge-new" style="top: 5px; left: 5px; font-size: 0.65rem; padding: 2px 6px;">NEW</span>
               <img :src="`/${game.image}`" :alt="game.title">
               <div class="similar-card-body">
                 <p class="similar-card-title">{{ game.title }}</p>
@@ -155,11 +156,34 @@ const loading = ref(true)
 const featuredGames = ref([])
 
 const { data } = await useAsyncData('featured-games', async () => {
-  const { data } = await supabase.from('games').select('id, title, image, platform').limit(6)
+  const { data } = await supabase.from('games').select('id, title, image, platform, created_at').limit(6)
   return data
 })
+
+const isNew = (dateStr) => {
+  if (!dateStr) return false
+  const diffTime = Math.abs(new Date() - new Date(dateStr))
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+  return diffDays <= 7
+}
 
 featuredGames.value = data.value || []
 loading.value = false
 </script>
+
+<style scoped>
+.badge-new {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: linear-gradient(45deg, #ef4444, #f97316);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  z-index: 2;
+  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.4);
+}
+</style>
 
