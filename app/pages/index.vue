@@ -1,34 +1,44 @@
 <template>
   <div class="pb-5">
-    <!-- Hero Slider (Featured Game) -->
+    <!-- Hero Slider (Featured Games) -->
     <div class="container mt-4">
-      <div v-if="featuredGame" class="hero-slider-container mb-5">
-        <div class="hero-slider-bg">
-        <img :src="`/${featuredGame.image}`" :alt="featuredGame.title">
-      </div>
-      <div class="hero-slider-content container py-5">
-        <div class="row align-items-center h-100">
-          <div class="col-lg-8">
-            <h1 class="hero-game-title">{{ featuredGame.title }}</h1>
-            <div class="d-flex flex-wrap gap-2 mb-3">
-              <span class="badge-genre" style="background: rgba(16,185,129,0.2); color: #10b981; border: 1px solid #10b981;">V 1.0</span>
-              <span class="badge-genre" style="background: rgba(255,255,255,0.1); color: white;">{{ featuredGame.platform }}</span>
-              <span class="badge-genre" style="background: rgba(255,255,255,0.1); color: white;">{{ featuredGame.year }}</span>
+      <div v-if="featuredGames.length > 0" class="hero-slider-container mb-5">
+        <transition name="slide-fade" mode="out-in">
+          <div :key="currentSlide" class="hero-slide-wrapper">
+            <div class="hero-slider-bg">
+              <img :src="`/${featuredGames[currentSlide].image}`" :alt="featuredGames[currentSlide].title">
             </div>
-            <p class="hero-game-desc mb-4">
-              {{ featuredGame.description?.substring(0, 150) || 'Game premium seru yang wajib kamu mainkan! Download secara gratis dan nikmati keseruannya sekarang juga.' }}...
-            </p>
-            <div class="d-flex flex-wrap gap-3">
-              <NuxtLink :to="`/game/${featuredGame.id}`" class="hero-btn-primary">
-                Download Now &rarr;
-              </NuxtLink>
-              <NuxtLink :to="`/game/${featuredGame.id}`" class="hero-btn-secondary">
-                Details &rsaquo;
-              </NuxtLink>
+            <div class="hero-slider-content container py-5">
+              <div class="row align-items-center h-100">
+                <div class="col-lg-8">
+                  <h1 class="hero-game-title">{{ featuredGames[currentSlide].title }}</h1>
+                  <div class="d-flex flex-wrap gap-2 mb-3">
+                    <span class="badge-genre" style="background: rgba(16,185,129,0.2); color: #10b981; border: 1px solid #10b981;">V 1.0</span>
+                    <span class="badge-genre" style="background: rgba(255,255,255,0.1); color: white;">{{ featuredGames[currentSlide].platform }}</span>
+                    <span class="badge-genre" style="background: rgba(255,255,255,0.1); color: white;">{{ featuredGames[currentSlide].year }}</span>
+                  </div>
+                  <p class="hero-game-desc mb-4">
+                    {{ featuredGames[currentSlide].description?.substring(0, 150) || 'Game premium seru yang wajib kamu mainkan! Download secara gratis dan nikmati keseruannya sekarang juga.' }}...
+                  </p>
+                  <div class="d-flex flex-wrap gap-3">
+                    <NuxtLink :to="`/game/${featuredGames[currentSlide].id}`" class="hero-btn-primary">
+                      Download Now &rarr;
+                    </NuxtLink>
+                    <NuxtLink :to="`/game/${featuredGames[currentSlide].id}`" class="hero-btn-secondary">
+                      Details &rsaquo;
+                    </NuxtLink>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+        </transition>
+        <!-- Slider Dots -->
+        <div class="slider-dots">
+          <span v-for="(g, idx) in featuredGames" :key="idx" 
+                class="slider-dot" :class="{ active: currentSlide === idx }"
+                @click="setSlide(idx)"></span>
         </div>
-      </div>
       </div>
     </div>
     
@@ -65,20 +75,11 @@
         </a>
       </div>
     </div>
-    <!-- Search & Header -->
+    <!-- Header -->
     <div class="container pt-4 pb-3">
       <div class="row align-items-center">
-        <div class="col-md-6 mb-3 mb-md-0">
+        <div class="col-12 mb-3 mb-md-0">
           <h2 class="section-heading m-0">Trending Games</h2>
-        </div>
-        <div class="col-md-6">
-          <input
-            type="text"
-            v-model="searchQuery"
-            class="search-modern w-100"
-            placeholder="Cari game..."
-            style="padding: 10px 20px; font-size: 0.95rem; background: var(--color-card);"
-          >
         </div>
       </div>
     </div>
@@ -177,25 +178,53 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 
 const supabase = useSupabaseClient()
 const route = useRoute()
 
-const searchQuery = ref('')
+const searchQuery = useState('searchQuery', () => '')
 const activePlatform = ref('Semua')
 const sortBy = ref('default')
 const genreFilter = ref(route.query.genre || '')
 
+watch(() => route.query.genre, (newVal) => {
+  genreFilter.value = newVal || ''
+})
+
 const platforms = ['Semua', 'PC', 'PS2', 'PS3']
 
-// Featured Game for Hero
-const featuredGame = computed(() => {
+// Featured Games for Hero Slider
+const featuredGames = computed(() => {
   if (games.value && games.value.length > 0) {
-    // Return the latest game (assuming sorted or just first item)
-    return games.value[0]
+    return games.value.slice(0, 3) // Tampilkan 3 game teratas
   }
-  return null
+  return []
+})
+
+const currentSlide = ref(0)
+let slideInterval = null
+
+const setSlide = (idx) => {
+  currentSlide.value = idx
+  resetInterval()
+}
+
+const resetInterval = () => {
+  if (slideInterval) clearInterval(slideInterval)
+  slideInterval = setInterval(() => {
+    if (featuredGames.value.length > 0) {
+      currentSlide.value = (currentSlide.value + 1) % featuredGames.value.length
+    }
+  }, 5000)
+}
+
+onMounted(() => {
+  resetInterval()
+})
+
+onUnmounted(() => {
+  if (slideInterval) clearInterval(slideInterval)
 })
 
 const { data: games, pending } = await useAsyncData('games', async () => {
@@ -283,6 +312,51 @@ const isNew = (dateStr) => {
   font-weight: bold;
   z-index: 2;
   box-shadow: 0 4px 10px rgba(239, 68, 68, 0.4);
+}
+
+/* Slider Vue Transitions */
+.hero-slide-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all 0.5s ease;
+}
+.slide-fade-enter-from {
+  opacity: 0;
+  transform: translateX(30px);
+}
+.slide-fade-leave-to {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+/* Slider Dots */
+.slider-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+.slider-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.slider-dot.active {
+  background: #38bdf8;
+  width: 20px;
+  border-radius: 10px;
 }
 </style>
 
