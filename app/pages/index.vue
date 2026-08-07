@@ -13,7 +13,6 @@
                 <div class="col-lg-8">
                   <h1 class="hero-game-title">{{ featuredGames[currentSlide].title }}</h1>
                   <div class="d-flex flex-wrap gap-2 mb-3">
-                    <span class="badge-genre" style="background: rgba(16,185,129,0.2); color: #10b981; border: 1px solid #10b981;">V 1.0</span>
                     <span class="badge-genre" style="background: rgba(255,255,255,0.1); color: white;">{{ featuredGames[currentSlide].platform }}</span>
                     <span class="badge-genre" style="background: rgba(255,255,255,0.1); color: white;">{{ featuredGames[currentSlide].year }}</span>
                   </div>
