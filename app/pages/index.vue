@@ -100,7 +100,7 @@
       <div class="container">
         <div class="text-center mb-5">
           <p class="section-label">💡 KEUNGGULAN KAMI</p>
-          <h2 class="section-title">Kenapa Pilih Game25?</h2>
+          <h2 class="section-title">Kenapa Pilih Agame25?</h2>
           <p class="section-subtitle">Kami berkomitmen memberikan pengalaman gaming terbaik untuk Anda</p>
         </div>
         <div class="row">

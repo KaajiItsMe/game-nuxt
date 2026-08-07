@@ -22,7 +22,7 @@
             <p class="section-label">🎯 MISI KAMI</p>
             <h2 class="section-title">Membuat Gaming Lebih Mudah Diakses</h2>
             <p style="color: #94a3b8; line-height: 1.9; font-size: 1.05rem;">
-              Game25 lahir dari keyakinan bahwa setiap gamer berhak mendapatkan informasi game yang lengkap, akurat, dan mudah ditemukan. Kami menyatukan ribuan judul game dari berbagai platform dalam satu tempat yang nyaman dan cepat.
+              Agame25 lahir dari keyakinan bahwa setiap gamer berhak mendapatkan informasi game yang lengkap, akurat, dan mudah ditemukan. Kami menyatukan ribuan judul game dari berbagai platform dalam satu tempat yang nyaman dan cepat.
             </p>
             <p style="color: #94a3b8; line-height: 1.9; font-size: 1.05rem; margin-top: 16px;">
               Mulai dari spesifikasi teknis, trailer resmi, panduan bermain, hingga review komunitas — semua tersedia tanpa biaya berlangganan.
@@ -33,7 +33,7 @@
               <div style="font-size: 4rem; margin-bottom: 16px;">🎮</div>
               <p class="section-label">DIBANGUN UNTUK GAMER</p>
               <p style="color: #64748b; font-size: 0.95rem; line-height: 1.7; margin: 0;">
-                "Kami tahu betapa frustrasinya mencari informasi game yang tersebar di berbagai sumber. Game25 hadir sebagai solusinya."
+                "Kami tahu betapa frustrasinya mencari informasi game yang tersebar di berbagai sumber. Agame25 hadir sebagai solusinya."
               </p>
             </div>
           </div>

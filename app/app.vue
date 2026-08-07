@@ -50,7 +50,7 @@
           </div>
         </div>
         <hr class="footer-divider">
-        <p class="footer-bottom">&copy; 2026 Game25. All rights reserved. &nbsp;|&nbsp; Kontak: loremipsum0891@gmail.com</p>
+        <p class="footer-bottom">&copy; 2026 Agame25. All rights reserved. &nbsp;|&nbsp; Kontak: loremipsum0891@gmail.com</p>
       </div>
     </footer>
 

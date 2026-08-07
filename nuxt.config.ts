@@ -8,10 +8,10 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: 'Game25 - Download Game PC & Konsol - Repack | Crack',
+      title: 'Agame25 - Download Game PC & Konsol - Repack | Crack',
       meta: [
-        { name: 'description', content: 'Game25 adalah platform penyedia katalog game untuk PC, PS2, dan PS3. Temukan game favoritmu.' },
-        { name: 'keywords', content: 'Game25, repack, crack, free, repacked, cracked, gratis, download game offline' }
+        { name: 'description', content: 'Agame25 adalah platform penyedia katalog game untuk PC, PS2, dan PS3. Temukan game favoritmu.' },
+        { name: 'keywords', content: 'Agame25, repack, crack, free, repacked, cracked, gratis, download game offline' }
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/source/favicon.ico' },
